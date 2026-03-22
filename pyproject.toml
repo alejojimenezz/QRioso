@@ -1,0 +1,14 @@
+[project]
+name = "qrioso"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "customtkinter>=5.2.0",
+    "pillow>=10.0.0",
+    "pyinstaller>=6.0.0",
+    "pytest>=8.0.0",
+    "qrcode[pil]>=7.4.2",
+    "segno>=1.6.0",
+]

@@ -1,0 +1,16 @@
+# ── Interfaz gráfica ──────────────────────────────────────────────────────────
+customtkinter>=5.2.0
+
+# ── Generación de QR ─────────────────────────────────────────────────────────
+qrcode[pil]>=7.4.2      # [pil] incluye Pillow para exportar PNG
+pillow>=10.0.0           # renderizado y manipulación de imágenes
+
+# ── Exportación SVG ───────────────────────────────────────────────────────────
+# qrcode genera SVG nativo, pero segno da más control sobre el output
+segno>=1.6.0
+
+# ── Empaquetado (solo para desarrollo, no necesario en runtime) ───────────────
+pyinstaller>=6.0.0
+
+# ── Tests ─────────────────────────────────────────────────────────────────────
+pytest>=8.0.0
