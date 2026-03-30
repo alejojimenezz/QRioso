@@ -14,17 +14,17 @@ from PyInstaller.building.build_main import Analysis
 block_cipher = None
 
 a = Analysis(
-    ['src/main.py'],                        # punto de entrada
+    ['src/main.py'],
     pathex=['.'],
     binaries=[],
     datas=[
-        ('assets/*.ico', 'assets'),         # ícono Windows
-        ('assets/*.png', 'assets'),         # ícono Linux / preview
+        ('assets/*.ico', 'assets'),         # Windows
+        ('assets/*.png', 'assets'),         # Linux
     ],
     hiddenimports=[
         'customtkinter',
-        'PIL._tkinter_finder',              # necesario para Pillow + Tkinter
-        'qrcode.image.svg',                 # backend SVG de qrcode
+        'PIL._tkinter_finder',
+        'qrcode.image.svg',
         'qrcode.image.pure',
         'segno',
     ],
@@ -32,7 +32,7 @@ a = Analysis(
     hooksconfig={},
     runtime_hooks=[],
     excludes=[
-        'pytest',                           # no incluir herramientas de dev
+        'pytest',
         'pip',
         'setuptools',
     ],
@@ -55,14 +55,13 @@ exe = EXE(
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,                               # comprime el binario (requiere UPX instalado)
+    upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=False,                          # False = sin ventana de consola al abrir
+    console=False,
     disable_windowed_traceback=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    # ── Ícono por plataforma ───────────────────────────────────────────────────
     icon='assets/icon.ico' if sys.platform == 'win32' else 'assets/icon.png',
 )
