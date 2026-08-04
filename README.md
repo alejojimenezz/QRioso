@@ -19,7 +19,6 @@ QR code generator project with GUI, developed using `uv` as the Python manager, 
       - [Pytest (Not yet used)](#pytest-not-yet-used)
   - [Structure](#structure)
     - [assets](#assets)
-    - [build](#build)
     - [src](#src)
       - [generator](#generator)
       - [ui](#ui)
@@ -76,7 +75,7 @@ GEN --> engine[qr_engine.py]
 
 ### assets
 
-### build
+Only content (so far) are the .ico and .png logo files.
 
 ### src
 
@@ -93,6 +92,10 @@ GEN --> engine[qr_engine.py]
 - [settings](/src/ui/settings.py)
 
 ### tests
+
+- [test_qr_engine](/tests/test_qr_engine.py)
+
+Unit tests for the qr code generator.
 
 ## Default settigns
 
