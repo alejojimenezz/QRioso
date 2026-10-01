@@ -16,7 +16,8 @@ QR code generator project with GUI, developed using `uv` as the Python manager, 
       - [QRcode](#qrcode)
       - [Segno (Not yet used)](#segno-not-yet-used)
       - [PyInstaller](#pyinstaller)
-      - [Pytest (Not yet used)](#pytest-not-yet-used)
+      - [Pytest](#pytest)
+  - [Build guide](#build-guide)
   - [Structure](#structure)
     - [assets](#assets)
     - [src](#src)
@@ -52,9 +53,17 @@ v1.6.0 To aid in SVG format output
 
 v6.0.0 As the execuable generator, hoping to make the program as accessible and easy to use as possible
 
-#### Pytest (Not yet used)
+#### Pytest
 
 v8.0.0 To use for unit testing of the project
+
+## Build guide
+
+Desde el root del proyecto ejecutar:
+
+```
+uv run pyinstaller qrioso.spec
+```
 
 ## Structure
 
@@ -72,6 +81,8 @@ UI --> settings[settings.py]
 GEN --> config[config.py]
 GEN --> engine[qr_engine.py]
 ```
+
+
 
 ### assets
 
