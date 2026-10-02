@@ -9,6 +9,7 @@ QR code generator project with GUI, developed using `uv` as the Python manager, 
 > Be better than your yesterday's self.
 
 - [QRioso](#qrioso)
+  - [User guide](#user-guide)
   - [Build settings](#build-settings)
     - [Python version](#python-version)
     - [Used libraries and dependencies](#used-libraries-and-dependencies)
@@ -25,6 +26,9 @@ QR code generator project with GUI, developed using `uv` as the Python manager, 
       - [ui](#ui)
     - [tests](#tests)
   - [Default settigns](#default-settigns)
+
+## User guide
+
 
 
 ## Build settings
@@ -118,6 +122,7 @@ Unit tests for the qr code generator.
 | Format           | PNG                |
 | Box size         | 10 px              |
 | Border           | 4 px               |
+| Dot style        | Square             |
 | Error correction | M ~15%             |
 | QR color         | Black              |
 | QR background    | White              |

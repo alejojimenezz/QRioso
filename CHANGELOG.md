@@ -4,6 +4,8 @@
 
 ### Added
 
+- Dot style editing
+
 ### Changed
 
 ### Removed
