@@ -1,8 +1,34 @@
 import qrcode
 import qrcode.image.svg
 from pathlib import Path
+from PIL import ImageColor
+from qrcode.image.styledpil import StyledPilImage
+from qrcode.image.styles.colormasks import SolidFillColorMask
+from qrcode.image.styles.moduledrawers.pil import (
+    SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer,
+    RoundedModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer,
+)
+from qrcode.image.styles.moduledrawers.svg import (
+    SvgPathSquareDrawer, SvgPathCircleDrawer,
+)
 
 SUPPORTED_FORMATS = ["png", "svg"]
+
+PNG_DOT_STYLES = {
+    "Cuadrado": SquareModuleDrawer,
+    "Cuadrado con espacio": GappedSquareModuleDrawer,
+    "Círculo": CircleModuleDrawer,
+    "Redondeado": RoundedModuleDrawer,
+    "Barras verticales": VerticalBarsDrawer,
+    "Barras horizontales": HorizontalBarsDrawer,
+}
+
+SVG_DOT_STYLES = {
+    "Cuadrado": SvgPathSquareDrawer,
+    "Círculo": SvgPathCircleDrawer,
+}
+
+DOT_STYLES = list(PNG_DOT_STYLES.keys())
 
 ERROR_CORRECTION_LEVELS = {
     "L ~7%": qrcode.constants.ERROR_CORRECT_L,
@@ -25,10 +51,15 @@ class QRGenerator:
         self,
         box_size: int = 10,
         border: int = 2,
+        dot_style: str = "Cuadrado",
         error_correction: str = "M ~15%",
         fill_color: str = "black",
         back_color: str = "white",
     ):
+
+        if dot_style not in PNG_DOT_STYLES:
+            raise ValueError(f"Invalid dot style: '{dot_style}'. Use from: {DOT_STYLES}")
+        self.dot_style = dot_style
                 
         if error_correction not in ERROR_CORRECTION_LEVELS:
             raise ValueError(
@@ -77,16 +108,30 @@ class QRGenerator:
         qr.make(fit=True)
         return qr
 
-    def _generate_png(self, data: str, path: Path) -> None:
+    def build_pil_image(self, data: str):
         qr = self._build_qr(data)
-        img = qr.make_image(
-            fill_color=self.fill_color,
-            back_color=self.back_color,
+        return qr.make_image(
+            image_factory=StyledPilImage,
+            module_drawer=PNG_DOT_STYLES[self.dot_style](),
+            color_mask=SolidFillColorMask(
+                back_color=ImageColor.getrgb(self.back_color),
+                front_color=ImageColor.getrgb(self.fill_color),
+            ),
         )
-        img.save(path)
+
+    def _generate_png(self, data: str, path: Path) -> None:
+        self.build_pil_image(data).save(path)
 
     def _generate_svg(self, data: str, path: Path) -> None:
+        if self.dot_style not in SVG_DOT_STYLES:
+            raise ValueError(
+                f"El estilo '{self.dot_style}' no está disponible en SVG. "
+                f"Use: {list(SVG_DOT_STYLES.keys())}"
+            )
         qr = self._build_qr(data)
-        img = qr.make_image(image_factory=qrcode.image.svg.SvgPathImage)
+        img = qr.make_image(
+            image_factory=qrcode.image.svg.SvgPathImage,
+            module_drawer=SVG_DOT_STYLES[self.dot_style](),
+        )
         with open(path, "wb") as f:
             img.save(f)

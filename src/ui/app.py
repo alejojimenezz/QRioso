@@ -143,14 +143,16 @@ class QRiosoApp(ctk.CTk):
             gen = QRGenerator(
                 box_size=params["box_size"],
                 border=params["border"],
+                dot_style=params["dot_style"],
                 error_correction=params["error_correction"],
                 fill_color=params["fill_color"],
                 back_color=params["back_color"],
             )
-            img = gen._build_qr(params["data"]).make_image(
-                fill_color=params["fill_color"],
-                back_color=params["back_color"],
-            ).get_image()
+            # img = gen._build_qr(params["data"]).make_image(
+            #     fill_color=params["fill_color"],
+            #     back_color=params["back_color"],
+            # ).get_image()
+            img = gen.build_pil_image(params["data"]).get_image()
 
             img.thumbnail((200, 200), Image.LANCZOS)
 
@@ -180,6 +182,7 @@ class QRiosoApp(ctk.CTk):
             gen = QRGenerator(
                 box_size=params["box_size"],
                 border=params["border"],
+                dot_style=params["dot_style"],
                 error_correction=params["error_correction"],
                 fill_color=params["fill_color"],
                 back_color=params["back_color"],

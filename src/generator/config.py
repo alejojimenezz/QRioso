@@ -7,6 +7,7 @@ DEFAULT_OUTPUT_DIR = Path.home() / "Documents" / "qrioso"
 DEFAULT_FORMAT          = "png"
 DEFAULT_BOX_SIZE        = 10
 DEFAULT_BORDER          = 2
+DEFAULT_DOT_STYLE       = "Cuadrado"
 DEFAULT_ERROR_CORRECTION = "M ~15%"          # L ~7% | M ~15% | Q ~25% | H ~30%
 DEFAULT_FILL_COLOR      = "#000000"
 DEFAULT_BACK_COLOR      = "#FFFFFF"

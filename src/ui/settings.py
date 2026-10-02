@@ -11,11 +11,13 @@ from src.generator.config import (
     DEFAULT_BACK_COLOR,
     DEFAULT_BORDER,
     DEFAULT_BOX_SIZE,
+    DEFAULT_DOT_STYLE,
     DEFAULT_ERROR_CORRECTION,
     DEFAULT_FILL_COLOR,
     DEFAULT_FORMAT,
 )
 
+from src.generator.qr_engine import DOT_STYLES
 
 class SettingsPanel(ctk.CTkFrame):
 
@@ -28,6 +30,7 @@ class SettingsPanel(ctk.CTkFrame):
         self._fmt_var    = ctk.StringVar(value=DEFAULT_FORMAT)
         self._box_var    = ctk.IntVar(value=DEFAULT_BOX_SIZE)
         self._border_var = ctk.IntVar(value=DEFAULT_BORDER)
+        self._dot_var    = ctk.StringVar(value=DEFAULT_DOT_STYLE)
         self._ec_var     = ctk.StringVar(value=DEFAULT_ERROR_CORRECTION)
         self._fill_color = DEFAULT_FILL_COLOR
         self._back_color = DEFAULT_BACK_COLOR
@@ -81,6 +84,16 @@ class SettingsPanel(ctk.CTkFrame):
             unit="",
             row=row,
         )
+
+        # Estilo de puntos
+        row = self._section_label("Estilo de puntos", row)
+        ctk.CTkOptionMenu(
+            self,
+            values=DOT_STYLES,
+            variable=self._dot_var,
+            command=lambda _:self._on_change(),
+        ).grid(row=row, column=0, sticky="ew", pady=(0,10))
+        row += 1
 
         # Error correction
         row = self._section_label("Corrección de error", row)
@@ -258,6 +271,7 @@ class SettingsPanel(ctk.CTkFrame):
             "fmt":              self._fmt_var.get(),
             "box_size":         self._box_var.get(),
             "border":           self._border_var.get(),
+            "dot_style":        self._dot_var.get(),
             "error_correction": self._ec_var.get(),
             "fill_color":       self._fill_color,
             "back_color":       self._back_color,
