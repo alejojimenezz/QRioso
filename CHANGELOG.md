@@ -4,7 +4,8 @@
 
 ### Added
 
-- Dot style editing
+- Dot style customization
+- Eye style customization
 
 ### Changed
 
