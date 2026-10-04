@@ -29,7 +29,7 @@ QR code generator project with GUI, developed using `uv` as the Python manager, 
 
 ## User guide
 
-
+<!-- TODO -->
 
 ## Build settings
 

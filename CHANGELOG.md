@@ -4,20 +4,18 @@
 
 ### Added
 
-- Dot style editing
-
 ### Changed
+
+- UI improvements
 
 ### Removed
 
-## [0.0.2] - 2026-09-30
+## [0.1.0]
 
 ### Added
 
-- Initial python files.
-- Basic uv guide for quick reference.
-- Unit tests.
-- Release file tests.
+- Dot style customization
+- Eye style customization
 
 ### Changed
 
@@ -30,6 +28,10 @@
 - English baseline.
 - Build with uv.
 - Structured base folders and files.
+- Initial python files.
+- Basic uv guide for quick reference.
+- Unit tests.
+- Release file tests.
 
 [unreleased]: https://github.com/alejojimenezz/QRioso
 [0.0.1]: https://github.com/alejojimenezz/QRioso/releases/tag/v0.0.1
