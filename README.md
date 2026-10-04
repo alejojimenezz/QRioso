@@ -63,10 +63,14 @@ v8.0.0 To use for unit testing of the project
 
 ## Build guide
 
-Desde el root del proyecto ejecutar:
+From projects root run:
 
 ```
 uv run pyinstaller qrioso.spec
+```
+If the previous command doesn't work, try:
+```
+uv run python -m PyInstaller qrioso.spec
 ```
 
 ## Structure
@@ -123,6 +127,7 @@ Unit tests for the qr code generator.
 | Box size         | 10 px              |
 | Border           | 4 px               |
 | Dot style        | Square             |
+| Eye style        | Square             |
 | Error correction | M ~15%             |
 | QR color         | Black              |
 | QR background    | White              |
