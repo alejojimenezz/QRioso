@@ -4,6 +4,12 @@
 
 ### Added
 
+<<<<<<< HEAD
+=======
+- Dot style customization
+- Eye style customization
+
+>>>>>>> 6934601b82cae8d939c31bc725935900c7128e9d
 ### Changed
 
 - UI improvements
